@@ -1,0 +1,124 @@
+Body {
+  background: #e7f6ff;
+}
+.Head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eaeaea;
+  padding: 30px;
+}
+
+.Logo {
+  display: flex;
+  margin: 0 0 0 20px;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.LogoText {
+  margin: 0 0 0 15px;
+}
+
+.first-child {
+  font-weight: bolder;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+#TextDimmed {
+  margin-top: -20px;
+}
+
+.TextDimmed {
+  color: #9d9d9d;
+}
+
+.LogoRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 15px;
+}
+.TextLogoRight {
+  margin-right: 10px;
+  color: #5c5c5c;
+  font-weight: 600;
+}
+
+.SvgRight {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.App {
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  max-width: 1080px;
+  margin: 50px auto;
+}
+
+.AllSneakersText {
+  margin-bottom: 40px !important;
+}
+
+.Content {
+  padding: 40px;
+  h1 {
+    margin: 0;
+  }
+}
+
+.Card {
+  border: solid 1px #c9c9c9;
+  padding: 27px;
+  padding-top: 1px;
+  width: 170px;
+  height: 240px;
+  border-radius: 40px;
+  margin-right: 30px;
+  .CardBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .CardPrice {
+    display: flex;
+    margin-top: -30px;
+  }
+  h5 {
+    font-weight: 400;
+    font-size: 14px;
+  }
+  b {
+    font-size: 14px;
+  }
+  p {
+    opacity: 0.5;
+    font-size: 15px;
+  }
+}
+
+.CardPrice {
+  display: flex;
+  flex-direction: column;
+}
+.button {
+  margin: 20px;
+  background: #ffffff;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+.CardPriceB {
+  margin-top: -12px;
+}
+
+.Sneakers {
+  display: flex;
+}
