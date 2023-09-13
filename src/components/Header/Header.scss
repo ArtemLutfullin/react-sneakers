@@ -175,19 +175,39 @@ Body {
   flex-direction: column;
   justify-content: space-between;
 
+  .cartItemContainer {
+    overflow: auto;
+    .CartItem {
+      margin-bottom: 20px;
+    }
+  }
+
   h2 {
     margin-top: 30px;
+    padding-bottom: 10px;
     font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+
+    .RemoveBtn {
+      opacity: 0.5;
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 }
 
 .CartItem {
-  border: 1px solid #f3f3f3;
+  border: 1px solid #dbdbdb;
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  height: 100px;
 
   .CardItemImg {
     width: 70px;
@@ -226,7 +246,9 @@ Body {
 }
 
 .CartTotalBlock {
-  padding-left: 0px;
+  li {
+    margin-left: -35px;
+  }
   div {
     flex: 1;
     height: 1px;
@@ -241,13 +263,69 @@ Body {
     align-items: flex-end;
     margin-bottom: 20px;
   }
-}
+  button {
+    width: 100%;
+    height: 55px;
+    background: #9dd558;
+    border-radius: 18px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.2s ease-in-out;
 
+    &:hover {
+      background: lighten(#9dd558, 5%);
+      cursor: pointer;
+    }
+
+    &:active {
+      background: darken(#9dd558, 5%);
+    }
+  }
+  .GreenButton {
+    position: relative;
+
+    &:hover {
+      img {
+        transform: translateX(5px);
+      }
+    }
+
+    img {
+      position: absolute;
+      right: 40px;
+      top: 20px;
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+}
+.GreenButton {
+  width: 100%;
+  height: 55px;
+  background: #9dd558;
+  border-radius: 18px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background: lighten(#9dd558, 5%);
+    cursor: pointer;
+  }
+
+  &:active {
+    background: darken(#9dd558, 5%);
+  }
+}
 .items {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .cartItemContainer {
-  margin-top: -500px;
+  height: 100vh;
 }
