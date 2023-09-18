@@ -1,20 +1,18 @@
 import Content from '../../assets/img/plus.svg';
-import Sneakers1 from '../../assets/img/sneakers/1.jpg';
-
-function Card() {
+function Card(props) {
   return (
     <div className="Card">
       <div className="Favorite">
         <img src="/SVG/HeartUnLiked.svg" alt="UnLiked" />
       </div>
-      <img width={160} height={120} src={Sneakers1} alt="Sneakers" />
-      <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+      <img width={160} height={120} src={props.imageUrl} alt="Sneakers" />
+      <h5>{props.title}</h5>
       <div className="CardBottom">
         <div className="CardPrice">
           <p>Цена:</p>
-          <b className="CardPriceB">12 999 руб.</b>
+          <b className="CardPriceB">{props.price} руб.</b>
         </div>
-        <button className="button">
+        <button className="button" onClick={() => alert(123)}>
           <img width={11} height={11} src={Content} alt="plus" />
         </button>
       </div>
