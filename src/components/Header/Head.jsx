@@ -1,5 +1,5 @@
 import SneakersHead from '../../assets/img/image_4.svg';
-function Head() {
+function Head(props) {
   return (
     <div className="Head">
       <div className="Logo">
@@ -13,7 +13,7 @@ function Head() {
       </div>
       <div className="LogoRight">
         <svg
-          className="SvgRight"
+          className="SvgRightCart"
           width="20"
           height="20"
           viewBox="0 0 20 20"
@@ -42,7 +42,7 @@ function Head() {
             stroke-linejoin="round"
           />
         </svg>
-        <p className="TextLogoRight">0 руб.</p>
+        <p onClick={props.onClickCart} className="TextLogoRight">0 руб.</p>
         <svg
           className="SvgRight"
           width="22"

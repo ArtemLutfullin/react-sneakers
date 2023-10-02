@@ -1,16 +1,17 @@
 import Sneakers1 from '../../assets/img/sneakers/1.jpg';
 import Sneakers2 from '../../assets/img/sneakers/2.jpg';
 
-function CartDrawer() {
+function CartDrawer(props) {
   return (
-    <div /* */ style={{ display: 'none' }} className="Overley">
+    <div className="Overley">
       <div className="Drawer">
         <h2 style={{ marginBottom: '30px' }}>
           Корзина{' '}
           <img
-            className="RemoveBtn"
+            onClick={props.onClickClose}
+            className="CloseBtn"
             src="/SVG/btn-remove.svg"
-            alt="BtnRemove"
+            alt="CloseBtn"
           />
         </h2>
         <div className="cartItemContainer">

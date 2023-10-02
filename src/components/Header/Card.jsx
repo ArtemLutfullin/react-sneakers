@@ -1,8 +1,13 @@
-import Content from '../../assets/img/plus.svg';
+import React from 'react';
 function Card(props) {
+  const [isAdded, setIsAdded] = React.useState(false);
+
+  const onClickPlus = () => {
+    setIsAdded(!isAdded);
+  };
   return (
     <div className="Card">
-      <div className="Favorite">
+      <div className="Favorite" onClick={props.onClickFavorite}>
         <img src="/SVG/HeartUnLiked.svg" alt="UnLiked" />
       </div>
       <img width={160} height={120} src={props.imageUrl} alt="Sneakers" />
@@ -12,9 +17,12 @@ function Card(props) {
           <p>Цена:</p>
           <b className="CardPriceB">{props.price} руб.</b>
         </div>
-        <button className="button" onClick={() => alert(123)}>
-          <img width={11} height={11} src={Content} alt="plus" />
-        </button>
+        <img
+          style={{ cursor: 'pointer' }}
+          onClick={onClickPlus}
+          src={isAdded ? '/svg/PlusLiked.svg' : '/svg/plus.svg'}
+          alt="plus"
+        />
       </div>
     </div>
   );

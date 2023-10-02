@@ -1,4 +1,5 @@
 import './Header.scss';
+import React from 'react';
 import Card from './Card.jsx';
 import Head from './Head.jsx';
 import CartDrawer from './CartDrawer.jsx';
@@ -31,10 +32,12 @@ const arr = [
 ];
 
 const Header = () => {
+  const [CardOpened, setCardOpened] = React.useState(false);
+
   return (
     <div className="App">
-      <CartDrawer />
-      <Head />
+      {CardOpened && <CartDrawer onClickClose={() => setCardOpened(false) } /> }
+      <Head onClickCart={() => setCardOpened(true)} />
       <div className="Content">
         <div className="Search">
           <h1>Все кроссовки</h1>
@@ -45,7 +48,13 @@ const Header = () => {
         </div>
         <div className="Sneakers">
           {arr.map((obj) => (
-            <Card title={obj.title} price={obj.price} imageUrl={obj.imageUrl} />
+            <Card
+              title={obj.title}
+              price={obj.price}
+              imageUrl={obj.imageUrl}
+              onClickFavorite={() => console.log('Сердечко')}
+              onClickPlus={() => console.log('Плюс')}
+            />
           ))}
         </div>
       </div>
