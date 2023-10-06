@@ -84,6 +84,7 @@ Body {
   border: 1px solid #cacacac2;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
 
   input {
     border: 0;
@@ -91,6 +92,16 @@ Body {
     font-size: 16px;
     outline: none;
     width: 200px;
+  }
+
+  .ClearSearch {
+    cursor:  pointer;
+    position: absolute;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    right: 15px;
+    top: 13px;
   }
 }
 

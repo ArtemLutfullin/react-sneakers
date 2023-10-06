@@ -7,7 +7,7 @@ import CartDrawer from './CartDrawer.jsx';
 const Header = () => {
   const [items, setItems] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
-
+  const [searchValue, setSearchValue] = React.useState('');
   const [CardOpened, setCardOpened] = React.useState(false);
 
   React.useEffect(() => {
@@ -20,31 +20,60 @@ const Header = () => {
       });
   }, []);
 
-    const onAddToCart = (obj) => { 
-      setCartItems(prev => [...prev, obj]);
-    }
+  const onAddToCart = (obj) => {
+    setCartItems((prev) => [...prev, obj]);
+  };
+
+  const onChangeSearchValue = (event) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
     <div className="App">
-      {CardOpened && <CartDrawer items = {cartItems} onClickClose={() => setCardOpened(false)} />}
+      {CardOpened && (
+        <CartDrawer
+          items={cartItems}
+          onClickClose={() => setCardOpened(false)}
+        />
+      )}
       <Head onClickCart={() => setCardOpened(true)} />
       <div className="Content">
         <div className="Search">
-          <h1>Все кроссовки</h1>
+          <h1>
+            {searchValue
+              ? `Поиск по запросу: "${searchValue}"`
+              : 'Все кроссовки'}
+          </h1>
           <div className="SearchBlock">
             <img src="/SVG/Search.svg" alt="Search" />
-            <input placeholder="Поиск ..." />
+            {searchValue && (
+              <img
+                onClick={() => setSearchValue('')}
+                className="ClearSearch"
+                src="/SVG/btn-remove.svg"
+                alt="CloseBtn"
+              />
+            )}
+            <input
+              onChange={onChangeSearchValue}
+              value={searchValue}
+              placeholder="Поиск..."
+            />
           </div>
         </div>
         <div className="Sneakers">
-          {items.map((item) => (
-            <Card
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
-              onFavorite={() => console.log('Сердечко')}
-              onPlus={(obj) => onAddToCart(obj)}
-            />
-          ))}
+          {items
+            .filter((item) => item.title.toLowerCase( ).includes(searchValue.toLowerCase()))
+            .map((item, index) => (
+              <Card
+                key={index}
+                title={item.title}
+                price={item.price}
+                imageUrl={item.imageUrl}
+                onFavorite={() => console.log('Сердечко')}
+                onPlus={(obj) => onAddToCart(obj)}
+              />
+            ))}
         </div>
       </div>
     </div>
