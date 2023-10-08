@@ -17,10 +17,21 @@ const Header = () => {
       .then((res) => {
         setItems(res.data);
       });
+    axios
+      .get('https://651abd73340309952f0dc81f.mockapi.io/cart')
+      .then((res) => {
+        setCartItems(res.data);
+      });
   }, []);
 
   const onAddToCart = (obj) => {
+    axios.post('https://651abd73340309952f0dc81f.mockapi.io/cart', obj);
     setCartItems((prev) => [...prev, obj]);
+  };
+
+  const onRemoveItem = (id) => {
+    // axios.delete(`https://651abd73340309952f0dc81f.mockapi.io/cart/${id}`);
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
   const onChangeSearchValue = (event) => {
@@ -33,6 +44,7 @@ const Header = () => {
         <CartDrawer
           items={cartItems}
           onClickClose={() => setCardOpened(false)}
+          onRemove={onRemoveItem}
         />
       )}
       <Head onClickCart={() => setCardOpened(true)} />
@@ -60,6 +72,9 @@ const Header = () => {
             />
           </div>
         </div>
+        {items.filter((item) =>
+          item.title.toLowerCase().includes(searchValue.toLowerCase())
+        ).length <= 0 && <h2>По вашему запросу ничего не найдено</h2>}
         <div className="Sneakers">
           {items
             .filter((item) =>

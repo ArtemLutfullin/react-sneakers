@@ -95,7 +95,7 @@ Body {
   }
 
   .ClearSearch {
-    cursor:  pointer;
+    cursor: pointer;
     position: absolute;
     right: 0;
     width: 18px;
@@ -290,9 +290,7 @@ Body {
     background: darken(#9dd558, 5%);
   }
 }
-.items {
-  display: flex;
-  flex-direction: column;
+.itemss {
   margin-bottom: 20px;
 }
 
@@ -347,4 +345,18 @@ Body {
 }
 .CardPriceB {
   margin-top: -12px;
+}
+
+.CartEmpty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  p {
+    text-align: center;
+   margin-top: -11px;
+  }
+  h2 {
+    margin-top: 0 ;
+  }
 }
