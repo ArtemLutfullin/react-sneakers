@@ -1,7 +1,7 @@
 function CartDrawer({ onClickClose, items = [] }) {
   return (
-    <div className="Overley">
-      <div className="Drawer">
+    <div className="Overley" onClick={onClickClose}>
+      <div onClick={(event) => event.stopPropagation() } className="Drawer">
         <h2 style={{ marginBottom: '30px' }}>
           Корзина{' '}
           <img

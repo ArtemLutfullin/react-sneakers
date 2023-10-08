@@ -1,5 +1,6 @@
 import './Header.scss';
 import React from 'react';
+import axios from 'axios';
 import Card from './Card.jsx';
 import Head from './Head.jsx';
 import CartDrawer from './CartDrawer.jsx';
@@ -11,12 +12,10 @@ const Header = () => {
   const [CardOpened, setCardOpened] = React.useState(false);
 
   React.useEffect(() => {
-    fetch('https://651abd73340309952f0dc81f.mockapi.io/items')
+    axios
+      .get('https://651abd73340309952f0dc81f.mockapi.io/items')
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
+        setItems(res.data);
       });
   }, []);
 
@@ -63,7 +62,9 @@ const Header = () => {
         </div>
         <div className="Sneakers">
           {items
-            .filter((item) => item.title.toLowerCase( ).includes(searchValue.toLowerCase()))
+            .filter((item) =>
+              item.title.toLowerCase().includes(searchValue.toLowerCase())
+            )
             .map((item, index) => (
               <Card
                 key={index}
