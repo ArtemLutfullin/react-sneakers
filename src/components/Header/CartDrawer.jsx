@@ -37,9 +37,13 @@ function CartDrawer({ onClickClose, onRemove, items = [] }) {
           <div className="CartEmpty">
             <img src="/SVG/CartEmpty.jpg" alt="CartEmpty" />
             <h2>Корзина пустая</h2>
-           
-              <p className="TextDimmed">Добавьте хотя-бы одну пару кроссовок, чтобы сделать заказ</p>
-            
+
+            <p className="TextDimmed">
+              Добавьте хотя-бы одну пару кроссовок, чтобы сделать заказ
+            </p>
+            <button onClick={onClickClose} className="GreenButtonBack">
+              <img src="/SVG/BackArrow.svg" alt="Arrow" /> Вернуться назад
+            </button>
           </div>
         )}
         <div></div>

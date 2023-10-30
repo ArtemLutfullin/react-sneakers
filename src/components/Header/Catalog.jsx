@@ -2,14 +2,12 @@ import './Header.scss';
 import React from 'react';
 import axios from 'axios';
 import Card from './Card.jsx';
-import Head from './Head.jsx';
-import CartDrawer from './CartDrawer.jsx';
 
-const Header = () => {
+const Catalog = () => {
   const [items, setItems] = React.useState([]);
-  const [cartItems, setCartItems] = React.useState([]);
+
+  const [Favorites, setFavorites] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
-  const [CardOpened, setCardOpened] = React.useState(false);
 
   React.useEffect(() => {
     axios
@@ -17,21 +15,21 @@ const Header = () => {
       .then((res) => {
         setItems(res.data);
       });
-    axios
-      .get('https://651abd73340309952f0dc81f.mockapi.io/cart')
-      .then((res) => {
-        setCartItems(res.data);
-      });
+    // axios
+    //   .get('https://651abd73340309952f0dc81f.mockapi.io/cart')
+    //   .then((res) => {
+    //     setCartItems(res.data);
+    //   });
   }, []);
 
   const onAddToCart = (obj) => {
-    axios.post('https://651abd73340309952f0dc81f.mockapi.io/cart', obj);
-    setCartItems((prev) => [...prev, obj]);
+    axios.post('https://651abd73340309952f0dc81f.mockapi.io/cart', obj); //бесплатный лемит кончился на создание ресурсов поэтому /cart
+    // setCartItems((prev) => [...prev, obj]);
   };
 
-  const onRemoveItem = (id) => {
-    // axios.delete(`https://651abd73340309952f0dc81f.mockapi.io/cart/${id}`);
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  const onAddToFavorites = (obj) => {
+    axios.post('https://6526a55b917d673fd76cb4ba.mockapi.io/favorite', obj);
+    setFavorites((prev) => [...prev, obj]);
   };
 
   const onChangeSearchValue = (event) => {
@@ -39,15 +37,7 @@ const Header = () => {
   };
 
   return (
-    <div className="App">
-      {CardOpened && (
-        <CartDrawer
-          items={cartItems}
-          onClickClose={() => setCardOpened(false)}
-          onRemove={onRemoveItem}
-        />
-      )}
-      <Head onClickCart={() => setCardOpened(true)} />
+    <div>
       <div className="Content">
         <div className="Search">
           <h1>
@@ -86,7 +76,7 @@ const Header = () => {
                 title={item.title}
                 price={item.price}
                 imageUrl={item.imageUrl}
-                onFavorite={() => console.log('Сердечко')}
+                onFavorite={(obj) => onAddToFavorites(obj)}
                 onPlus={(obj) => onAddToCart(obj)}
               />
             ))}
@@ -96,4 +86,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Catalog;

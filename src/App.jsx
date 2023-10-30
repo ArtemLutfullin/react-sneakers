@@ -1,10 +1,24 @@
 import './App.css';
-import Header from './components/Header/Header.jsx';
+import { Routes, Route, Outlet } from 'react-router';
+import Catalog from './components/Header/Catalog.jsx';
+import Head from './components/Header/Head.jsx';
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="App">
+            <Head />
+            <Outlet />
+          </div>
+        }
+      >
+        <Route index element={<Catalog />} />
+        <Route path="/favorites" element={<div>Валера лучший!!!</div>} />
+        <Route path="/profile" element={<div>Стр профиля</div>} />
+      </Route>
+    </Routes>
   );
 }
 
